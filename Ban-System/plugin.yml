@@ -1,0 +1,8 @@
+name: Ban
+version: 1.0
+main: me.Ban.main.Main
+commands:
+  ban:
+  unban:
+  check:
+  reasons:
