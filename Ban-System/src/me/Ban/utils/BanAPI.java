@@ -40,7 +40,8 @@ public class BanAPI {
     }
 
 
-    public static void banPlayer(String name, String grund, String vonWem, long Stundenn) {
+    @SuppressWarnings("deprecation")
+	public static void banPlayer(String name, String grund, String vonWem, long Stundenn) {
 
         if (!isBanned(name)) {
             long now = System.currentTimeMillis();
@@ -63,13 +64,13 @@ public class BanAPI {
 
 
             TextComponent text = new TextComponent();
-            text.setText(Main.pf + "Â§7Du hast den Spieler Â§c" + name + " Â§7erfolgreich Â§cgebanntÂ§8! ");
+            text.setText(Main.pf + "§7Du hast den Spieler §c" + name + " §7erfolgreich §cgebannt§8! ");
             TextComponent extra = new TextComponent();
-            extra.setText("Â§8Â§l[Â§cÂ§lVERSEHEN - UNBANÂ§8Â§l]");
+            extra.setText("§8§l[§c§lVERSEHEN - UNBAN§8§l]");
             extra.setBold(true);
 
             extra.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/unban " + name + " Ban Versehen"));
-            text.addExtra(extra);
+            //text.addExtra(extra);
             if (p != null && p != BungeeCord.getInstance().getConsole()) {
                 p.sendMessage(" ");
                 p.sendMessage(text);
@@ -80,7 +81,7 @@ public class BanAPI {
             for (ProxiedPlayer all : BungeeCord.getInstance().getPlayers()) {
                 if (all.hasPermission("ban.ban")) {
                     all.sendMessage(" ");
-                    all.sendMessage(Main.pf + "Â§7Der Spieler Â§c" + name + " Â§7wurde von Â§a" + vonWem + " Â§7mit dem GrundÂ§8: Â§e" + grund + " Â§7gebanntÂ§8!");
+                    all.sendMessage(Main.pf + "§7Der Spieler §c" + name + " §7wurde von §a" + vonWem + " §7mit dem Grund§8: §e" + grund + " §7gebannt§8!");
                     all.sendMessage(" ");
                 }
             }
@@ -131,24 +132,24 @@ public class BanAPI {
 			/* 176 */
 
 			/*     */
-                String rrmaining = "Â§c" + Tage + " Â§7TagÂ§8(Â§7eÂ§8) Â§c" + Stunden +
-			/* 177 */" Â§7StundeÂ§8(Â§7nÂ§8) Â§c" + Minuten + " Â§7MinuteÂ§8(Â§7nÂ§8) Â§c" + Sekunden
-                        + " Â§7SekundeÂ§8(Â§7nÂ§8)";
+                String rrmaining = "§c" + Tage + " §7Tag§8(§7e§8) §c" + Stunden +
+			/* 177 */" §7Stunde§8(§7n§8) §c" + Minuten + " §7Minute§8(§7n§8) §c" + Sekunden
+                        + " §7Sekunde§8(§7n§8)";
 
 
 
 
 
 
-                BungeeCord.getInstance().getPlayer(name).disconnect(  "Â§8Â§m------------------------------------------------------------------------\n" +
-                                "Â§7Du wurdest vom Â§cNetzwerk Â§7gebanntÂ§8!\n" +
+                BungeeCord.getInstance().getPlayer(name).disconnect(  "§8§m------------------------------------------------------------------------\n" +
+                                "§7Du wurdest vom §cNetzwerk §7gebannt§8!\n" +
                                 "      \n" +
-                                "Â§7GrundÂ§8: Â§eHackingÂ§8[Â§eID: " + getID(name) + "Â§8]\n" +
-                                "Â§7Du wurdest gebannt vonÂ§8: Â§a" + vonWem + "\n" +
-                                "Â§7Verbleibende ZeitÂ§8: " + rrmaining + " Â§8!\n" +
-                                "Â§7Du kannst in unserem Â§bForum Â§7einen Entbannungsantrag stellenÂ§8!\n" +
+                                "§7Grund§8: §eHacking§8[§eID: " + getID(name) + "§8]\n" +
+                                "§7Du wurdest gebannt von§8: §a" + vonWem + "\n" +
+                                "§7Verbleibende Zeit§8: " + rrmaining + " §8!\n" +
+                                "§7Du kannst in unserem §bForum §7einen Entbannungsantrag stellen§8!\n" +
                                 "\n" +
-                                "Â§8Â§m------------------------------------------------------------------------");
+                                "§8§m------------------------------------------------------------------------");
 
             }
 
@@ -158,11 +159,11 @@ public class BanAPI {
             TextComponent text = new TextComponent();
             text.setText(Main.pf + "Â§cDieser Spieler ist bereits gebannt! ");
             TextComponent extra = new TextComponent();
-            extra.setText("Â§8Â§l[Â§cÂ§lUNBANÂ§8Â§l]");
+            extra.setText("§8§l[§c§lUNBAN§8§l]");
             extra.setBold(true);
 
             extra.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/unban " + name + " Ban Versehen"));
-            text.addExtra(extra);
+            //text.addExtra(extra);
             p.sendMessage(" ");
             p.sendMessage(text);
             p.sendMessage(" ");
@@ -176,7 +177,7 @@ public class BanAPI {
         for (ProxiedPlayer all : BungeeCord.getInstance().getPlayers()) {
             if (all.hasPermission("ban.ban")) {
                 all.sendMessage(" ");
-                all.sendMessage(Main.pf + "Â§7Der Spieler Â§c" + name + " Â§7wurde von Â§c" + vonwem + " Â§7mit dem Grund Â§e" + grund + " Â§7entbanntÂ§8!");
+                all.sendMessage(Main.pf + "§7Der Spieler §c" + name + " §7wurde von §c" + vonwem + " §7mit dem Grund §e" + grund + " §7entbannt§8!");
                 all.sendMessage(" ");
             }
         }
@@ -223,12 +224,12 @@ public class BanAPI {
             if (rs.next()) {
                 return rs.getString("Grund");
             } else {
-                return "Â§cNicht Gebannt";
+                return "§cNicht Gebannt";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Â§cNicht Gebannt";
+        return "§cNicht Gebannt";
     }
 
     public static String getVonwem(String name) {
@@ -238,12 +239,12 @@ public class BanAPI {
             if (rs.next()) {
                 return rs.getString("von");
             } else {
-                return "Â§cNicht Gebannt";
+                return "§cNicht Gebannt";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Â§cNicht Gebannt";
+        return "§cNicht Gebannt";
 
     }
 
@@ -254,12 +255,12 @@ public class BanAPI {
             if (rs.next()) {
                 return rs.getString("current");
             } else {
-                return "Â§cNicht Gebannt";
+                return "§cNicht Gebannt";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Â§cNicht Gebannt";
+        return "§cNicht Gebannt";
 
     }
 
@@ -284,8 +285,8 @@ public class BanAPI {
             Date date = new Date();
             date.setTime(getEnd(name) - System.currentTimeMillis());
             if (getEnd(name) == -1) {
-                return "Â§4Â§lPERMANENT";
-            }
+                return "§4Â§lPERMANENT";
+            } else {
 
             int Sekunden = 0;
 			/* 156 */
@@ -331,9 +332,10 @@ public class BanAPI {
 			/* 176 */
 
 			/*     */
-            return "Â§c" + Tage + " Â§7TagÂ§8(Â§7eÂ§8) Â§c" + Stunden +
-			/* 177 */" Â§7StundeÂ§8(Â§7nÂ§8) Â§c" + Minuten + " Â§7MinuteÂ§8(Â§7nÂ§8) Â§c" + Sekunden
-                    + " Â§7SekundeÂ§8(Â§7nÂ§8)";
+            return "§c" + Tage + " §7Tag§8(§7e§8) §c" + Stunden +
+        			/* 177 */" §7Stunde§8(§7n§8) §c" + Minuten + " §7Minute§8(§7n§8) §c" + Sekunden
+                    + " §7Sekunde§8(§7n§8)";
+        }
         }
 
         return "Â§cNicht Gebannt!";

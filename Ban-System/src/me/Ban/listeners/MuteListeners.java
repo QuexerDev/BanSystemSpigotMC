@@ -28,12 +28,12 @@ public class MuteListeners implements Listener{
                 if (!e.getMessage().startsWith("/")) {
                     e.setCancelled(true);
                     BungeeCord.getInstance().getPlayer(name).sendMessage(" ");
-                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "Â§8Â§m------------------------------");
-                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "Â§7Du bist GemutedÂ§8!");
-                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "Â§7GrundÂ§8: Â§e" + MuteAPI.getGrund(name) + "Â§8[Â§eID: " + MuteAPI.getID(name) + "Â§8]");
-                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "Â§7Gemuted vonÂ§8: Â§a" + MuteAPI.getVonwem(name));
-                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "Â§7Verbleibende ZeitÂ§8: " + MuteAPI.getEndAsString(name));
-                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "Â§8Â§m------------------------------");
+                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "§8§m------------------------------");
+                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "§7Du bist Gemuted§8!");
+                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "§7GrundÂ§8: §e" + MuteAPI.getGrund(name) + "§8[§eID: " + MuteAPI.getID(name) + "§8]");
+                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "§7Gemuted von§8: §a" + MuteAPI.getVonwem(name));
+                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "§7Verbleibende Zeit§8: " + MuteAPI.getEndAsString(name));
+                    BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf + "§8§m------------------------------");
                     BungeeCord.getInstance().getPlayer(name).sendMessage(" ");
                 }
             }

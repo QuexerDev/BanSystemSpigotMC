@@ -36,7 +36,8 @@ public class MuteAPI {
     }
 
 
-    public static void mutePlayer(String name, String grund, String vonWem, long Stundenn) {
+    @SuppressWarnings("deprecation")
+	public static void mutePlayer(String name, String grund, String vonWem, long Stundenn) {
 
         if (!isMuted(name)) {
             long now = System.currentTimeMillis();
@@ -58,25 +59,26 @@ public class MuteAPI {
 
 
             TextComponent text = new TextComponent();
-            text.setText(Main.pf+"Â§7Du hast den Spieler Â§c"+name+" Â§7erfolgreich Â§cgemutedÂ§8! ");
+            text.setText(Main.pf+"§7Du hast den Spieler §c"+name+" §7erfolgreich §cgemuted§8! ");
             TextComponent extra = new TextComponent();
-            extra.setText("Â§8Â§l[Â§cÂ§lVERSEHEN - UNMUTEÂ§8Â§l]");
+            extra.setText("§8§l[§c§lVERSEHEN - UNMUTE§8§l]");
             extra.setBold(true);
 
             extra.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/unban" + name+" Mute Versehen"));
             p.sendMessage(" ");
-            text.addExtra(extra);
-            p.sendMessage(" ");
-
+           // text.addExtra(extra);
             if (p != null && p != BungeeCord.getInstance().getConsole()) {
                 p.sendMessage(text);
             }
+            p.sendMessage(" ");
+
+            
 
 
             for (ProxiedPlayer all : BungeeCord.getInstance().getPlayers()) {
                 if(all.hasPermission("ban.mute")) {
                     all.sendMessage(" ");
-                    all.sendMessage(Main.pf+"Â§7Der Spieler Â§c"+name+" Â§7wurde von Â§a"+vonWem+" Â§7mit dem GrundÂ§8: Â§e"+grund+" Â§7gemutedÂ§8!");
+                    all.sendMessage(Main.pf+"§7Der Spieler §c"+name+" §7wurde von §a"+vonWem+" §7mit dem Grund§8: §e"+grund+" §7gemuted§8!");
                     all.sendMessage(" ");
 
                 }
@@ -127,18 +129,18 @@ public class MuteAPI {
 			/* 176 */
 
 			/*     */
-                String remaining = "Â§c" + Tage + " Â§7TagÂ§8(Â§7eÂ§8) Â§c" + Stunden +
-			/* 177 */" Â§7StundeÂ§8(Â§7nÂ§8) Â§c" + Minuten + " Â§7MinuteÂ§8(Â§7nÂ§8) Â§c" + Sekunden
-                        + " Â§7SekundeÂ§8(Â§7nÂ§8)";
+                String remaining = "§c" + Tage + " §7Tag§8(§7e§8) §c" + Stunden +
+			/* 177 */" §7Stunde§8(§7n§8) §c" + Minuten + " §7Minute§8(§7n§8) §c" + Sekunden
+                        + " §7Sekunde§8(§7n§8)";
 
 
                 BungeeCord.getInstance().getPlayer(name).sendMessage(" ");
-                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"Â§8Â§m------------------------------");
-                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"Â§7Du wurdest GemutedÂ§8!");
-                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"Â§7GrundÂ§8: Â§e"+grund+"Â§8[Â§eID: " + getID(name) + "Â§8]");
-                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"Â§7Gemuted vonÂ§8: Â§a"+vonWem);
-                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"Â§7Verbleibende ZeitÂ§8: "+remaining);
-                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"Â§8Â§m------------------------------");
+                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"§8§m------------------------------");
+                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"§7Du wurdest Gemuted§8!");
+                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"§7Grund§8: §e"+grund+"§8[§eID: " + getID(name) + "§8]");
+                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"§7Gemuted von§8: §a"+vonWem);
+                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"§7Verbleibende Zeit§8: "+remaining);
+                BungeeCord.getInstance().getPlayer(name).sendMessage(Main.pf+"§8§m------------------------------");
                 BungeeCord.getInstance().getPlayer(name).sendMessage(" ");
 
             }
@@ -149,13 +151,13 @@ public class MuteAPI {
         } else {
             ProxiedPlayer p = BungeeCord.getInstance().getPlayer(vonWem);
             TextComponent text = new TextComponent();
-            text.setText(Main.pf+"Â§cDieser Spieler ist bereits gemuted! ");
+            text.setText(Main.pf+"§cDieser Spieler ist bereits gemuted! ");
             TextComponent extra = new TextComponent();
-            extra.setText("Â§8Â§l[Â§cÂ§lUNMUTEÂ§8Â§l]");
+            extra.setText("§8§l[§c§lUNMUTE§8§l]");
             extra.setBold(true);
 
             extra.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND,"/unban "+name+" Mute Versehen"));
-            text.addExtra(extra);
+            //text.addExtra(extra);
             BungeeCord.getInstance().getPlayer(name).sendMessage(" ");
             p.sendMessage(text);
             BungeeCord.getInstance().getPlayer(name).sendMessage(" ");
@@ -169,7 +171,7 @@ public class MuteAPI {
         for(ProxiedPlayer all : BungeeCord.getInstance().getPlayers()) {
             if(all.hasPermission("ban.mute")) {
                 all.sendMessage(" ");
-                all.sendMessage(Main.pf + "Â§7Der Spieler Â§c" + name + " Â§7wurde von Â§c" + vonwem + " Â§7mit dem Grund Â§e" + grund + " Â§7entmutedÂ§8!");
+                all.sendMessage(Main.pf + "§7Der Spieler §c" + name + " §7wurde von §c" + vonwem + " §7mit dem Grund §e" + grund + " §7entmuted§8!");
                 all.sendMessage(" ");
             }
         }
@@ -216,12 +218,12 @@ public class MuteAPI {
             if (rs.next()) {
                 return rs.getString("Grund");
             } else {
-                return "Â§cNicht Gemutet";
+                return "§cNicht Gemutet";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Â§cNicht Gemutet";
+        return "§cNicht Gemutet";
     }
 
     public static String getVonwem(String name) {
@@ -231,12 +233,12 @@ public class MuteAPI {
             if (rs.next()) {
                 return rs.getString("von");
             } else {
-                return "Â§cNicht Gemutet";
+                return "§cNicht Gemutet";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Â§cNicht Gemutet";
+        return "§cNicht Gemutet";
 
     }
 
@@ -247,12 +249,12 @@ public class MuteAPI {
             if (rs.next()) {
                 return rs.getString("current");
             } else {
-                return "Â§cNicht Gemutet";
+                return "§cNicht Gemutet";
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Â§cNicht Gemutet";
+        return "§cNicht Gemutet";
 
     }
 
@@ -277,7 +279,7 @@ public class MuteAPI {
             Date date = new Date();
             date.setTime(getEnd(name));
             if(getEnd(name) == -1) {
-                return "Â§4Â§lPERMANENT";
+                return "§4§lPERMANENT";
             }
             int Sekunden = 0;
 			/* 156 */
@@ -323,11 +325,11 @@ public class MuteAPI {
 			/* 176 */
 
 			/*     */
-            return "Â§c" + Tage + " Â§7TagÂ§8(Â§7eÂ§8) Â§c" + Stunden +
-			/* 177 */" Â§7StundeÂ§8(Â§7nÂ§8) Â§c" + Minuten + " Â§7MinuteÂ§8(Â§7nÂ§8) Â§c" + Sekunden
-                    + " Â§7SekundeÂ§8(Â§7nÂ§8)";
+            return "§c" + Tage + " §7Tag§8(§7e§8) §c" + Stunden +
+        			/* 177 */" §7Stunde§8(§7n§8) §c" + Minuten + " §7Minute§8(§7n§8) §c" + Sekunden
+                    + " §7Sekunde§8(§7n§8)";
         } else {
-            return "Â§cNicht Gemutet";
+            return "§cNicht Gemutet";
 
 
         }

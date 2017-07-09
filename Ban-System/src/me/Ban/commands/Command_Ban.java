@@ -1,5 +1,6 @@
 package me.Ban.commands;
 
+import me.Ban.main.Main;
 import me.Ban.utils.BanAPI;
 import me.Ban.utils.MuteAPI;
 import net.md_5.bungee.api.CommandSender;
@@ -83,9 +84,14 @@ public class Command_Ban extends Command{
                         break;
 
 
-                }
+                } 
 
+            } else {
+            	s.sendMessage(Main.pf+"§7Benutze§8: §c/ban <Spieler> <Grund>");
+            	s.sendMessage(Main.pf+"§7Für eine Liste mit Gründen benutze§8: §c/reasons");
             }
+        }else {
+        	s.sendMessage(Main.pf+"§cDazu hast du keine Rechte!");
         }
     }
 }

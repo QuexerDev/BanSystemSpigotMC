@@ -24,13 +24,20 @@ public class Main extends Plugin{
 
     public static String pf;
     public static File file = new File("plugins//BanSystemByQuexer", "config.yml");
-    public static File ordner = new File("plugins//BanSystemByQuexe");
+    public static File ordner = new File("plugins//BanSystemByQuexer");
     public static Configuration cfg;
 
 
     @Override
     public void onEnable() {
 
+    	if(!ordner.exists()) {
+
+            ordner.mkdir();
+
+    }
+    	
+    	
         if(!file.exists()) {
             try {
                 file.createNewFile();
@@ -38,11 +45,7 @@ public class Main extends Plugin{
                 e.printStackTrace();
             }
         }
-        if(!ordner.exists()) {
-
-                ordner.mkdir();
-
-        }
+        
 
 
 
@@ -87,7 +90,7 @@ public class Main extends Plugin{
             getConfig().set("MySQL.port", "port");
         }
 
-
+        	saveConfig();
 
 
 

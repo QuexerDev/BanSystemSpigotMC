@@ -23,16 +23,16 @@ public class BanListeners implements Listener{
             if(BanAPI.isBanned(name)) {
                 if(System.currentTimeMillis() < BanAPI.getEnd(name)) {
                     e.setCancelled(true);
-                    e.setCancelReason("Â§8Â§m------------------------------------------------------------------------\n" +
-                            "Â§7Du bist vom Â§cNetzwerk Â§7gebanntÂ§8!\n" +
+                    e.setCancelReason("§8§m------------------------------------------------------------------------\n" +
+                            "§7Du bist vom §cNetzwerk §7gebannt§8!\n" +
                             "      \n" +
-                            "Â§7GrundÂ§8: Â§eHackingÂ§8[Â§eID: " + getID(name) + "Â§8]\n" +
-                            "Â§7Du wurdest gebannt vonÂ§8: Â§a" + BanAPI.getVonwem(name) + "\n" +
-                            "Â§7Verbleibende ZeitÂ§8: " + getEndAsString(name) + " Â§8!\n" +
+                            "§7Grund§8: §eHacking§8[§eID: " + getID(name) + "§8]\n" +
+                            "§7Du wurdest gebannt von§8: §a" + BanAPI.getVonwem(name) + "\n" +
+                            "§7Verbleibende Zeit§8: " + getEndAsString(name) + " §8!\n" +
                             "\n" +
-                            "Â§7Du kannst auf unserem Â§bTeamSpeak Â§7oder in unserem Â§bForum Â§7einen Entbannungsantrag stellenÂ§8!\n" +
+                            "§7Du kannst auf unserem §bTeamSpeak §7oder in unserem §bForum §7einen Entbannungsantrag stellen§8!\n" +
                             "\n" +
-                            "Â§8Â§m------------------------------------------------------------------------");
+                            "§8§m------------------------------------------------------------------------");
                 } else {
                     MuteAPI.unBanPlayer(name, "System [Automatischer Unban]", "Konsole");
                 }

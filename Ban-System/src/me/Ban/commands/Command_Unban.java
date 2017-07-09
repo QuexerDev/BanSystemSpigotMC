@@ -28,22 +28,22 @@ public class Command_Unban extends Command{
                     if(MuteAPI.isMuted(name)) {
                         MuteAPI.unBanPlayer(name, grund, s.getName());
                     } else {
-                        s.sendMessage(Main.pf+"Â§7Dieser Spieler ist Â§cnicht Â§7gemutetÂ§8!");
+                        s.sendMessage(Main.pf+"§7Dieser Spieler ist §cnicht §7gemutet§8!");
                     }
                 } else if(typ.equalsIgnoreCase("ban")) {
                     if(BanAPI.isBanned(name)) {
                         BanAPI.unBanPlayer(name, grund, s.getName());
                     } else {
-                        s.sendMessage(Main.pf+"Â§7Dieser Spieler ist Â§cnicht Â§7gebanntÂ§8!");
+                        s.sendMessage(Main.pf+"§7Dieser Spieler ist §cnicht §7gebannt§8!");
                     }
                 } else {
-                    s.sendMessage(Main.pf+"Â§7BenutzeÂ§8: Â§c/unban <Name> <Mute|Ban> <Grund>");
+                    s.sendMessage(Main.pf+"§7Benutze§8: §c/unban <Name> <Mute|Ban> <Grund>");
                 }
 
 
 
             } else {
-                s.sendMessage(Main.pf+"Â§7BenutzeÂ§8: Â§c/unban <Name> <Mute|Ban> <Grund>");
+                s.sendMessage(Main.pf+"§7Benutze§8: §c/unban <Name> <Mute|Ban> <Grund>");
             }
         }
     }
